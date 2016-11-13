@@ -1,0 +1,30 @@
+SET CLIENT_ENCODING TO UTF8;
+SET STANDARD_CONFORMING_STRINGS TO ON;
+BEGIN;
+CREATE TABLE "arch_parking" (gid serial,
+"id" numeric(10,0),
+"name" varchar(254),
+"comment" varchar(254),
+"globalid" varchar(254));
+ALTER TABLE "arch_parking" ADD PRIMARY KEY (gid);
+SELECT AddGeometryColumn('','arch_parking','geom','4326','POINT',2);
+INSERT INTO "arch_parking" ("id","name","comment","globalid",geom) VALUES ('0','Devils Garden Parking',NULL,'{22514232-D9F0-4CBF-850F-7483DFB4C838}','0101000020E6100000C1AF2FEC0B665BC0E6AA7C810F644340');
+INSERT INTO "arch_parking" ("id","name","comment","globalid",geom) VALUES ('0','Campground Parking',NULL,'{A46C391F-8D0E-4802-9A5C-754CDDBAB611}','0101000020E6100000E09F950085655BC0CD8C9EF109634340');
+INSERT INTO "arch_parking" ("id","name","comment","globalid",geom) VALUES ('0','Delicate Arch Parking',NULL,'{D1AF1344-429D-4278-9AC4-493D3C268115}','0101000020E610000001CFEB0853615BC0370CB666245E4340');
+INSERT INTO "arch_parking" ("id","name","comment","globalid",geom) VALUES ('0','Delicate Arch Viewpoint Parking',NULL,'{0E5A9341-D312-4E53-A0DB-018D3FBCEE7F}','0101000020E6100000623B244518605BC07FA3CA87F25D4340');
+INSERT INTO "arch_parking" ("id","name","comment","globalid",geom) VALUES ('0','Windows Section Parking',NULL,'{7FE6C470-4CBB-4F14-98D9-2EEFDF78FE52}','0101000020E610000097B4A54D5B625BC0C7F63051F3574340');
+INSERT INTO "arch_parking" ("id","name","comment","globalid",geom) VALUES ('0','Visitor Center Parking','Will increase with new VC','{32E6B8CC-6EE1-4966-8496-BFA838A2B759}','0101000020E6100000B2B052B6AB675BC0DB9C0D72E04E4340');
+INSERT INTO "arch_parking" ("id","name","comment","globalid",geom) VALUES ('0','Park Avenue',NULL,'{5E20EFBF-60E8-4AFB-B07F-12A8AFCC4139}','0101000020E6100000044D309160665BC0C2F77A61E74F4340');
+INSERT INTO "arch_parking" ("id","name","comment","globalid",geom) VALUES ('0','La Sal Mountain Viewpoint',NULL,'{5F0AEB5D-7895-4218-8696-B9B938531CB4}','0101000020E61000001BFC414AD5655BC0D6239E8C2A504340');
+INSERT INTO "arch_parking" ("id","name","comment","globalid",geom) VALUES ('0','Park Avenue Parking','(end) of trail','{5BD4D362-7D8F-4246-AD65-EAFC0EB07C4A}','0101000020E6100000D92B187F69665BC03841579389514340');
+INSERT INTO "arch_parking" ("id","name","comment","globalid",geom) VALUES ('0','Balance Rock Parking',NULL,'{588EF5DB-5CAD-4D0A-AE76-187CA158E85F}','0101000020E61000009CBA73D53D645BC0A7FB587AD0594340');
+INSERT INTO "arch_parking" ("id","name","comment","globalid",geom) VALUES ('0','Garden of Eden Parking',NULL,'{C69519A0-AD67-48C6-8797-0E91E465F007}','0101000020E6100000EAF48AE934635BC0F587F66756594340');
+INSERT INTO "arch_parking" ("id","name","comment","globalid",geom) VALUES ('0','Double Arch parking',NULL,'{67C02717-8387-421C-BDA4-FA44B66A6CD1}','0101000020E6100000EB2D61D572625BC05C0E89CA19584340');
+INSERT INTO "arch_parking" ("id","name","comment","globalid",geom) VALUES ('0','Panorama Point Parking',NULL,'{A9999EF0-961F-43A6-81CA-9FDACD92338D}','0101000020E6100000B71F4CC371635BC0826123CB035C4340');
+INSERT INTO "arch_parking" ("id","name","comment","globalid",geom) VALUES ('0','Salt Valley Parking',NULL,'{286818EA-E557-453A-989C-56509208685B}','0101000020E610000038C3E4DA8C645BC0A8AD5BD4C05E4340');
+INSERT INTO "arch_parking" ("id","name","comment","globalid",geom) VALUES ('0','Fiery Furnace Parking',NULL,'{43AE1408-1FC1-4283-A128-75CA553DDA36}','0101000020E610000002F9A91A3A645BC0CFFD0F4E165F4340');
+INSERT INTO "arch_parking" ("id","name","comment","globalid",geom) VALUES ('0','Sanddune/Broken Arch Parking',NULL,'{2A149E01-52C3-459A-A127-A6F26E9DFB49}','0101000020E6100000CA400E9459655BC0EB9A666EDE614340');
+INSERT INTO "arch_parking" ("id","name","comment","globalid",geom) VALUES ('0','Skylline Arch Parking',NULL,'{DC3848AE-DBB3-4C6B-BBCA-017912B4653F}','0101000020E610000011E6F743D1655BC0F553E7E4D0624340');
+INSERT INTO "arch_parking" ("id","name","comment","globalid",geom) VALUES ('0','Courthouse Wash Parking (bridge)',NULL,'{CFD7219C-2DAB-44F2-BDAF-D4495A019BF9}','0101000020E6100000630C72EB48665BC027B620B91C534340');
+CREATE INDEX ON "arch_parking" USING GIST ("geom");
+COMMIT;
