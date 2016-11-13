@@ -1,7 +1,7 @@
 #Using Postgres for Data Aggregation and Cleanup
 ######POSTED ON 27 JANUARY 2015 BY CHAD LAWLIS
 
-The NPMap team is constantly wrangling datasets of varying formats both large and small, all of which must play nicely together to seamlessly feed into our [Places](http://www.nps.gov/npmap/tools/) system. In this post we are going to walk through how to use [Postgres](http://postgresapp.com/documentation/) to combine a table from CartoDB with a set of five shapefiles provided from our friends at [Arches National Park](http://www.nps.gov/arch/index.htm). The goal is to produce a final aggregated `output.geojson` file that we can plot on a map. 
+The NPMap team is constantly wrangling datasets of varying formats both large and small, all of which must play nicely together to seamlessly feed into our [Places](http://www.nps.gov/npmap/tools/) system. In this post we are going to walk through how to use [Postgres](http://postgresapp.com/documentation/) to combine a table from CartoDB with a set of five shapefiles provided from our friends at [Arches National Park](http://www.nps.gov/arch/index.htm). The goal is to produce a final aggregated `output.geojson` file that we can plot on a map.
 
 ##Required Software
 
@@ -110,14 +110,14 @@ Now, let's make a GET request to the API to download the data. CartoDB can expor
 http://nps.cartodb.com/api/v2/sql?format=CSV&q=SELECT name, type, unit_code, the_geom FROM points_of_interest;
 ```
 
-This will download a zipped shapefile `cartodb-query.zip`. Unzip and rename all files to `poi` (`poi.shp`, `poi.dbf`, etc). 
+This will download a zipped shapefile `cartodb-query.zip`. Unzip and rename all files to `poi` (`poi.shp`, `poi.dbf`, etc).
 
 ###Shapefiles
 
-Download the shapefiles from Arches National Park by cloning their [GitHub repo](https://github.com/nationalparkservice/data-challenge-lawlis) to your local machine. In Terminal, navigate to your desired directory and enter:
+Download the shapefiles from Arches National Park by cloning the [GitHub repo](https://github.com/cwlawlis802/data-challenge) to your local machine. In Terminal, navigate to your desired directory and enter:
 
 ```
-git clone https://github.com/nationalparkservice/data-challenge-lawlis.git
+git clone https://github.com/cwlawlis802/data-challenge.git
 ```
 
 Move the `poi` files to the same directory as the Arches shapefiles. Take a look at their projection by running a quick [GDAL](http://www.gdal.org/) command using the [ogrinfo](http://www.gdal.org/ogrinfo.html) utility, which is included in the Postgres installation:
@@ -251,9 +251,9 @@ Before we move on let's get a feel for the newly imported data. Run the followin
 ```
  psql -U chad -d nps -c "select * from arch_trailheads limit 10;"
  ```
- 
+
  Returns:
- 
+
  ```
 ~/Downloads/_nps (git::master) ▶ psql -U chad -d nps -c "select * from arch_trailheads limit 10;"
  gid |          name           |                globalid                |                        geom
@@ -358,7 +358,7 @@ ogr2ogr -f "GeoJSON" output.geojson PG:"host=localhost user=chad dbname=nps pass
 
 This will download to your pwd (present working directory). And there you go! You are now ready to plot this in your application of choice ([QGIS](http://www.qgis.org/en/site/), [TileMill](https://www.mapbox.com/tilemill/), [CartoDB](http://cartodb.com/), etc) to visualize and explore the data.
 
-[Check out the data on GitHub](https://github.com/nationalparkservice/data-challenge-lawlis/blob/master/output.geojson) which automatically renders GeoJSON files onto OpenStreetMap in browser. Below is another glimpse of the data overlaying [US State data](http://www.census.gov/cgi-bin/geo/shapefiles2014/file-download) from the US Census Bureau
+[Check out the data on GitHub](https://github.com/cwlawlis802/data-challenge/blob/master/output.geojson) which automatically renders GeoJSON files onto OpenStreetMap in browser. Below is another glimpse of the data overlaying [US State data](http://www.census.gov/cgi-bin/geo/shapefiles2014/file-download) from the US Census Bureau
 
 ![](https://farm8.staticflickr.com/7440/16193066338_d109a89903_c.jpg)
 
