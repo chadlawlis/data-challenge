@@ -114,10 +114,10 @@ This will download a zipped shapefile `cartodb-query.zip`. Unzip and rename all 
 
 ###Shapefiles
 
-Download the shapefiles from Arches National Park by cloning the [GitHub repo](https://github.com/cwlawlis802/data-challenge) to your local machine. In Terminal, navigate to your desired directory and enter:
+Download the shapefiles from Arches National Park by cloning the [GitHub repo](https://github.com/chadlawlis/data-challenge) to your local machine. In Terminal, navigate to your desired directory and enter:
 
 ```
-git clone https://github.com/cwlawlis802/data-challenge.git
+git clone https://github.com/chadlawlis/data-challenge.git
 ```
 
 Move the `poi` files to the same directory as the Arches shapefiles. Take a look at their projection by running a quick [GDAL](http://www.gdal.org/) command using the [ogrinfo](http://www.gdal.org/ogrinfo.html) utility, which is included in the Postgres installation:
@@ -358,7 +358,7 @@ ogr2ogr -f "GeoJSON" output.geojson PG:"host=localhost user=chad dbname=nps pass
 
 This will download to your pwd (present working directory). And there you go! You are now ready to plot this in your application of choice ([QGIS](http://www.qgis.org/en/site/), [TileMill](https://www.mapbox.com/tilemill/), [CartoDB](http://cartodb.com/), etc) to visualize and explore the data.
 
-[Check out the data on GitHub](https://github.com/cwlawlis802/data-challenge/blob/master/output.geojson) which automatically renders GeoJSON files onto OpenStreetMap in browser. Below is another glimpse of the data overlaying [US State data](http://www.census.gov/cgi-bin/geo/shapefiles2014/file-download) from the US Census Bureau
+[Check out the data on GitHub](https://github.com/chadlawlis/data-challenge/blob/master/output.geojson) which automatically renders GeoJSON files onto OpenStreetMap in browser. Below is another glimpse of the data overlaying [US State data](http://www.census.gov/cgi-bin/geo/shapefiles2014/file-download) from the US Census Bureau
 
 ![](https://farm8.staticflickr.com/7440/16193066338_d109a89903_c.jpg)
 
