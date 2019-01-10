@@ -1,9 +1,9 @@
-#Using Postgres for Data Aggregation and Cleanup
-######POSTED ON 27 JANUARY 2015 BY CHAD LAWLIS
+# Using Postgres for Data Aggregation and Cleanup
+###### POSTED ON 27 JANUARY 2015 BY CHAD LAWLIS
 
 The NPMap team is constantly wrangling datasets of varying formats both large and small, all of which must play nicely together to seamlessly feed into our [Places](http://www.nps.gov/npmap/tools/) system. In this post we are going to walk through how to use [Postgres](http://postgresapp.com/documentation/) to combine a table from CartoDB with a set of five shapefiles provided from our friends at [Arches National Park](http://www.nps.gov/arch/index.htm). The goal is to produce a final aggregated `output.geojson` file that we can plot on a map.
 
-##Required Software
+## Required Software
 
 Before we get started, you will need the following installed on your computer:
 * [Postgres.app](http://postgresapp.com/), which contains a full-featured PostgreSQL installation for Mac.
@@ -11,9 +11,9 @@ Before we get started, you will need the following installed on your computer:
 
 Refer to the [Postgres](http://postgresapp.com/documentation/), [PostgreSQL](http://www.postgresql.org/docs/9.4/static/index.html), and [PostGIS](http://postgis.net/documentation) documentation for other guidance as needed along the way.
 
-##Getting Started
+## Getting Started
 
-###CartoDB
+### CartoDB
 
 For this exercise we are provided with a CartoDB table with username: `nps` and table name: `points_of_interest` containing points of interest for the entire National Park Service, including Arches National Park. [CartoDB's SQL API](http://docs.cartodb.com/cartodb-platform/sql-api.html) allows you to interact with the table as if you were running SQL statements against a normal PostgreSQL database. This is a public table so anyone with the username and table name can select data without authentication through the API.
 
@@ -112,7 +112,7 @@ http://nps.cartodb.com/api/v2/sql?format=CSV&q=SELECT name, type, unit_code, the
 
 This will download a zipped shapefile `cartodb-query.zip`. Unzip and rename all files to `poi` (`poi.shp`, `poi.dbf`, etc).
 
-###Shapefiles
+### Shapefiles
 
 Download the shapefiles from Arches National Park by cloning the [GitHub repo](https://github.com/chadlawlis/data-challenge) to your local machine. In Terminal, navigate to your desired directory and enter:
 
@@ -197,7 +197,7 @@ mv arch_visitor_centers_4326.shp arch_visitor_centers.shp
 mv arch_visitor_centers_4326.shx arch_visitor_centers.shx
 ```
 
-##Using psql for Data Aggregation and Final Export
+## Using psql for Data Aggregation and Final Export
 
 [psql](http://postgresapp.com/documentation/cli-tools.html) is the PostgreSQL command line interface to your database. In Terminal navigate to the directory housing your data. Create a database `nps` and establish a PostGIS spatial extension through the following commands:
 
